@@ -38,7 +38,7 @@
             </div>
             <div>
                 <h1 class="font-bold text-base tracking-wide text-slate-100 flex items-center gap-1.5">
-                <span class="text-amber-400">Master Japan</span>
+                <span class="text-amber-400">Mater Japan</span>
                 </h1>
                 <p class="text-[11px] text-slate-400">Belajar Hiragana & Katakana</p>
             </div>
@@ -98,12 +98,13 @@
             </div>
         </section>
 
-        <!-- 2. DAFTAR KANA -->
+        <!-- 2. DAFTAR KANA (DENGAN INTERAKSI HAFAL) -->
         <section id="tab-daftar" class="hidden space-y-4">
             <div class="flex gap-2 bg-slate-200 p-1 rounded-xl">
                 <button onclick="switchKanaTab('hiragana')" id="btn-hira-tab" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition">Hiragana</button>
                 <button onclick="switchKanaTab('katakana')" id="btn-kata-tab" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition">Katakana</button>
             </div>
+            <p class="text-xs text-slate-500 text-center">Ketuk huruf untuk mendengarkan audio, atau ketuk tombol centang untuk menandai sudah dihafal!</p>
             <div id="kana-grid" class="grid grid-cols-5 gap-2.5">
                 <!-- Data dimasukkan via JS -->
             </div>
@@ -132,7 +133,7 @@
                     </button>
                 </div>
 
-                <!-- Tombol Navigasi Tulis: Sebelumnya & Berikutnya -->
+                <!-- Tombol Navigasi Tulis -->
                 <div class="grid grid-cols-3 gap-2 pt-2">
                     <button onclick="prevWriteChar()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">&larr; Sebelumnya</button>
                     <button onclick="clearCanvas()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">Hapus</button>
@@ -154,11 +155,8 @@
                     <p class="text-xs text-slate-400">Pilih bacaan Romaji yang tepat!</p>
                 </div>
 
-                <div id="quiz-options" class="grid grid-cols-2 gap-3">
-                    <!-- Tombol Opsi Pilihan Ganda -->
-                </div>
+                <div id="quiz-options" class="grid grid-cols-2 gap-3"></div>
 
-                <!-- Tombol Navigasi Kuis: Sebelumnya & Berikutnya -->
                 <div class="flex gap-2 pt-2">
                     <button id="quiz-prev-btn" onclick="prevQuizQuestion()" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-bold transition">
                         &larr; Sebelumnya
@@ -176,14 +174,12 @@
                 <button onclick="switchReadTab('kalimat')" id="btn-read-kalimat" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition">Kalimat Pendek</button>
                 <button onclick="switchReadTab('artikel')" id="btn-read-artikel" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition">Artikel & Berita</button>
             </div>
-            <div id="reading-container" class="space-y-4">
-                <!-- Konten Kalimat / Artikel dengan Furigana dimasukkan via JS -->
-            </div>
+            <div id="reading-container" class="space-y-4"></div>
         </section>
 
     </main>
 
-    <!-- Bottom Navigation Bar (Mobile Friendly) -->
+    <!-- Bottom Navigation Bar -->
     <nav class="fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-slate-200 py-2 px-4 flex justify-around items-center z-50">
         <button onclick="switchTab('progres')" id="nav-progres" class="flex flex-col items-center text-amber-600 transition">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
@@ -241,11 +237,11 @@
             {ch: 'ガ', romaji: 'ga'}, {ch: 'ギ', romaji: 'gi'}, {ch: 'グ', romaji: 'gu'}, {ch: 'ゲ', romaji: 'ge'}, {ch: 'ゴ', romaji: 'go'},
             {ch: 'ザ', romaji: 'za'}, {ch: 'ジ', romaji: 'ji'}, {ch: 'ズ', romaji: 'zu'}, {ch: 'ゼ', romaji: 'ze'}, {ch: 'ゾ', romaji: 'zo'},
             {ch: 'ダ', romaji: 'da'}, {ch: 'ヂ', romaji: 'dji'}, {ch: 'ヅ', romaji: 'dzu'}, {ch: 'デ', romaji: 'de'}, {ch: 'ド', romaji: 'do'},
+            {ch: 'ば'.toUpperCase(), romaji: 'ba'}, {ch: 'び'.toUpperCase(), romaji: 'bi'}, {ch: 'ぶ'.toUpperCase(), romaji: 'bu'}, {ch: 'べ'.toUpperCase(), romaji: 'be'}, {ch: 'ぼ'.toUpperCase(), romaji: 'bo'}, // Di-handle via array di bawah
             {ch: 'バ', romaji: 'ba'}, {ch: 'ビ', romaji: 'bi'}, {ch: 'ブ', romaji: 'bu'}, {ch: 'ベ', romaji: 'be'}, {ch: 'ボ', romaji: 'bo'},
             {ch: 'パ', romaji: 'pa'}, {ch: 'ピ', romaji: 'pi'}, {ch: 'プ', romaji: 'pu'}, {ch: 'ペ', romaji: 'pe'}, {ch: 'ポ', romaji: 'po'}
         ];
 
-        // Latihan Membaca dengan Furigana Lengkap untuk Semua Kanji
         const readingSentences = [
             {
                 html: '<ruby>海<rt>うみ</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くでキャンプをして、<ruby>料理<rt>りょうり</rt></ruby>を<ruby>作<rt>つく</rt></ruby>りました。',
@@ -292,14 +288,12 @@
             }
         ];
 
-        // State Aplikasi
         let currentWriteIdx = 0;
         let quizScore = 0;
         let quizCurrentIdx = 0;
         let quizCurrentData = [];
-        let userAnswersHistory = {}; // Menyimpan jawaban kuis per soal
+        let userAnswersHistory = {};
 
-        // Inisialisasi Saat Halaman Dimuat
         document.addEventListener('DOMContentLoaded', () => {
             renderDaftarKana('hiragana');
             setupCanvas();
@@ -308,7 +302,6 @@
             updateStats();
         });
 
-        // Pindah Tab Utama
         function switchTab(tabId) {
             ['progres', 'daftar', 'tulis', 'kuis', 'baca'].forEach(id => {
                 document.getElementById(`tab-${id}`).classList.add('hidden');
@@ -320,7 +313,6 @@
             if(tabId === 'tulis') resizeCanvas();
         }
 
-        // Tab Daftar Kana
         function switchKanaTab(type) {
             if(type === 'hiragana') {
                 document.getElementById('btn-hira-tab').className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition";
@@ -333,14 +325,24 @@
             }
         }
 
+        // Render Daftar Kana dengan Fitur Checklist Hafal Interaktif
         function renderDaftarKana(type) {
             const grid = document.getElementById('kana-grid');
             grid.innerHTML = '';
             const data = type === 'hiragana' ? hiraganaData : katakanaData;
+            let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
+
             data.forEach(item => {
+                const isHafal = learnedList[item.ch] === true;
                 const card = document.createElement('div');
-                card.className = "bg-white p-3 rounded-xl border border-slate-100 flex flex-col items-center justify-center shadow-sm hover:border-amber-400 transition cursor-pointer";
+                card.className = `p-3 rounded-xl border flex flex-col items-center justify-center shadow-sm transition cursor-pointer ${isHafal ? 'bg-amber-50/60 border-amber-400' : 'bg-white border-slate-100 hover:border-slate-300'}`;
+                
                 card.innerHTML = `
+                    <div class="w-full flex justify-end">
+                        <button onclick="event.stopPropagation(); toggleHafal('${item.ch}')" class="w-5 h-5 rounded-md flex items-center justify-center text-xs ${isHafal ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-300 hover:text-slate-500'}">
+                            ✓
+                        </button>
+                    </div>
                     <span class="text-2xl font-bold text-slate-800 mb-1">${item.ch}</span>
                     <div class="flex items-center gap-1.5">
                         <span class="text-[11px] text-slate-400 font-medium">${item.romaji}</span>
@@ -352,6 +354,17 @@
                 card.onclick = () => playAudio(item.ch);
                 grid.appendChild(card);
             });
+        }
+
+        function toggleHafal(ch) {
+            let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
+            learnedList[ch] = !learnedList[ch];
+            localStorage.setItem('learned_kana', JSON.stringify(learnedList));
+            
+            // Refresh tampilan grid aktif saat ini
+            const isHiraActive = document.getElementById('btn-hira-tab').classList.contains('bg-white');
+            renderDaftarKana(isHiraActive ? 'hiragana' : 'katakana');
+            updateStats();
         }
 
         // Kanvas Latihan Tulis
@@ -425,6 +438,13 @@
             document.getElementById('write-guide').innerText = item.ch;
             document.getElementById('write-romaji').innerText = item.romaji;
             document.getElementById('write-progress-text').innerText = `${currentWriteIdx + 1} / ${hiraganaData.length}`;
+            
+            // Otomatis tandai sebagai hafal saat berlatih tulis
+            let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
+            learnedList[item.ch] = true;
+            localStorage.setItem('learned_kana', JSON.stringify(learnedList));
+            updateStats();
+
             clearCanvas();
         }
 
@@ -438,14 +458,13 @@
             updateWriteView();
         }
 
-        // Kuis Pilihan Ganda dengan Navigasi Sebelumnya & Berikutnya
+        // Kuis Pilihan Ganda
         function initQuiz() {
             quizScore = 0;
             quizCurrentIdx = 0;
             userAnswersHistory = {};
             quizCurrentData = [...hiraganaData].sort(() => 0.5 - Math.random()).slice(0, 10);
             
-            // Kembalikan tampilan kuis apabila sebelumnya sudah selesai
             document.getElementById('tab-kuis').innerHTML = `
                 <div id="quiz-card-wrapper" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-5">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-3">
@@ -475,7 +494,6 @@
 
         function loadQuizQuestion() {
             if(quizCurrentIdx >= quizCurrentData.length) {
-                // Hitung skor akhir berdasarkan riwayat jawaban
                 let finalScore = 0;
                 quizCurrentData.forEach((q, idx) => {
                     if(userAnswersHistory[idx] === q.romaji) finalScore++;
@@ -496,7 +514,6 @@
             document.getElementById('quiz-counter').innerText = `Soal ${quizCurrentIdx + 1}/10`;
             document.getElementById('quiz-score').innerText = quizScore;
 
-            // Atur visibilitas tombol sebelumnya
             const prevBtn = document.getElementById('quiz-prev-btn');
             if(prevBtn) {
                 if(quizCurrentIdx === 0) {
@@ -511,7 +528,6 @@
             const currentItem = quizCurrentData[quizCurrentIdx];
             document.getElementById('quiz-question').innerText = currentItem.ch;
 
-            // Buat Pilihan Ganda (1 benar, 3 acak) atau gunakan cache opsi jika sudah pernah dijawab
             let options = currentItem._cachedOptions;
             if(!options) {
                 options = [currentItem.romaji];
@@ -532,7 +548,6 @@
                 const btn = document.createElement('button');
                 let btnClass = "py-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-xl font-bold text-slate-700 transition text-base";
                 
-                // Jika soal ini sudah pernah dijawab sebelumnya
                 if(answeredValue !== undefined) {
                     btn.disabled = true;
                     if(opt === currentItem.romaji) {
@@ -586,7 +601,7 @@
             }
         }
 
-        // Latihan Membaca Tab
+        // Latihan Membaca
         function switchReadTab(type) {
             if(type === 'kalimat') {
                 document.getElementById('btn-read-kalimat').className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition";
@@ -630,7 +645,6 @@
             el.classList.toggle('hidden');
         }
 
-        // Text-to-Speech (Audio Pelafalan)
         function playAudio(text) {
             if('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -641,14 +655,19 @@
             }
         }
 
-        // Manajemen Statistik / Progres LocalStorage
+        // Kalkulasi Progres Berdasarkan Huruf yang Benar-Benar Dihafal
         function updateStats(newScore = null) {
-            let stats = JSON.parse(localStorage.getItem('kana_stats')) || { hafal: 45, skor: 0 };
+            let stats = JSON.parse(localStorage.getItem('kana_stats')) || { skor: 0 };
             if(newScore !== null && newScore > stats.skor) {
                 stats.skor = newScore;
             }
             localStorage.setItem('kana_stats', JSON.stringify(stats));
-            document.getElementById('stat-hafal').innerText = stats.hafal;
+
+            // Hitung jumlah huruf yang dihafal dari LocalStorage
+            let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
+            let totalHafal = Object.values(learnedList).filter(Boolean).length;
+
+            document.getElementById('stat-hafal').innerText = totalHafal;
             document.getElementById('stat-skor').innerText = stats.skor;
         }
     </script>
