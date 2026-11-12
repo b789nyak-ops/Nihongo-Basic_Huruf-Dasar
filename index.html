@@ -9,7 +9,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
         body {
-            font-family: 'Plus Jakarta+Sans', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
             color: #1e293b;
         }
@@ -136,9 +136,9 @@
                     <span id="write-progress-text" class="text-xs text-slate-400 font-medium">1 / 75</span>
                 </div>
                 
-                <div class="relative w-48 h-48 mx-auto bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl flex items-center justify-center overflow-hidden">
+                <div class="relative w-48 h-48 mx-auto bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl flex items-center justify-center overflow-hidden canvas-container">
                     <span id="write-guide" class="absolute text-9xl text-slate-200 font-serif select-none pointer-events-none">あ</span>
-                    <canvas id="drawCanvas" class="absolute inset-0 w-full h-full cursor-crosshair canvas-container"></canvas>
+                    <canvas id="drawCanvas" class="absolute inset-0 w-full h-full cursor-crosshair"></canvas>
                 </div>
 
                 <div class="flex justify-center items-center gap-4">
@@ -325,7 +325,7 @@
                     {ch: 'リャ', romaji: 'rya'}, {ch: 'リュ', romaji: 'ryu'}, {ch: 'リョ', romaji: 'ryo'},
                     {ch: 'ジャ', romaji: 'ja'}, {ch: 'ジュ', romaji: 'ju'}, {ch: 'ジョ', romaji: 'jo'},
                     {ch: 'ビャ', romaji: 'bya'}, {ch: 'ビュ', romaji: 'byu'}, {ch: 'ビョ', romaji: 'byo'},
-                    {ch: 'ピャ', romaji: 'pya'}, {ch: 'ピュ', romaji: 'pyu'}, {ch: 'ピョ', romaji: 'pyo'},
+                    {ch: 'ぴゃ', romaji: 'pya'}, {ch: 'ぴゅ', romaji: 'pyu'}, {ch: 'ぴょ', romaji: 'pyo'},
                     {ch: 'ティ', romaji: 'ti'}, {ch: 'ディ', romaji: 'di'}, {ch: 'フィ', romaji: 'fi'}, {ch: 'ヴェ', romaji: 've'},
                     {ch: 'ッ', romaji: 'tsu (sokuon)'}, {ch: 'ー', romaji: 'chouon'}
                 ]
@@ -406,14 +406,14 @@
                 arti: 'Hobi saya adalah mengambil foto. Saya berjalan-jalan di kota Osaka dan menemukan pemandangan yang indah.'
             },
             {
-                html:'​<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>日曜日<rt>にちようび</rt></ruby>、<ruby>家族<rt>かぞく</rt></ruby>みんなで<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きな<ruby>公園<rt>こうえん</rt></ruby>へお<ruby>花見<rt>はなみ</rt></ruby>に行きます。',
+                html: '​<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>日曜日<rt>にちようび</rt></ruby>、<ruby>家族<rt>かぞく</rt></ruby>みんなで<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きな<ruby>公園<rt>こうえん</rt></ruby>へお<ruby>花見<rt>はなみ</rt></ruby>に行きます。',
                 romaji: 'Raishuu no nichiyoubi, kazoku minna de Toukyou no ookina kouen e ohanami ni ikimasu.',
                 arti: 'Hari Minggu depan, seluruh keluarga akan pergi melihat bunga sakura di taman besar di Tokyo.'
             },
             {
                 html: '<ruby>昨日<rt>きのう</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>、<ruby>部屋<rt>へや</rt></ruby>の<ruby>窓<rt>まど</rt></ruby>からとてもきれいな<ruby>満月<rt>まんげつ</rt></ruby>を<ruby>見<rt>み</rt></ruby>つけることができました。',
                 romaji: 'Kinou no yoru, heya no mado kara totemo kirei na mangetsu o mitsukeru koto ga dekimashita.',
-                ​arti: 'Tadi malam, saya dapat melihat bulan purnama yang sangat indah dari jendela kamar.'
+                arti: 'Tadi malam, saya dapat melihat bulan purnama yang sangat indah dari jendela kamar.'
             },
             {
                 html: '<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>新聞<rt>しんぶん</rt></ruby>を<ruby>読<rt>よ</rt></ruby>むために、<ruby>毎日<rt>まいにち</rt></ruby><ruby>少<rt>すこ</rt></ruby>しずつ<ruby>漢字<rt>かんじ</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>しています。',
@@ -426,7 +426,7 @@
                 arti: 'Saat ada waktu, membaca buku dengan tenang di perpustakaan adalah kesenangan nomor satu.'
             },
             {
-                html: '<ruby>来年<rt>らいねん</rt></ruby>の<ruby>春<rt>はる</rt></ruby>から<ruby>新<rt>あたら</rt></메이션>しい<ruby>仕事<rt>しごと</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めるために、<ruby>今<rt>いま</rt></ruby>は<ruby>準備<rt>じゅんび</rt></ruby>をがんばっています。',
+                html: '<ruby>来年<rt>らいねん</rt></ruby>の<ruby>春<rt>はる</rt></ruby>から<ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めるために、<ruby>今<rt>いま</rt></ruby>は<ruby>準備<rt>じゅんび</rt></ruby>をがんばっています。',
                 romaji: 'Rainen no haru kara atarashii shigoto o hajimeru tame ni, ima wa junbi o ganbatte imasu.',
                 arti: 'Untuk mulai bekerja di tempat baru mulai musim semi tahun depan, sekarang saya sedang giat-giatnya mempersiapkan diri.'
             }
@@ -559,9 +559,9 @@
             canvas.addEventListener('mouseup', stopPos);
             canvas.addEventListener('mousemove', draw);
 
-            canvas.addEventListener('touchstart', startPos);
+            canvas.addEventListener('touchstart', startPos, {passive: false});
             canvas.addEventListener('touchend', stopPos);
-            canvas.addEventListener('touchmove', draw);
+            canvas.addEventListener('touchmove', draw, {passive: false});
             updateWriteView();
         }
 
@@ -588,8 +588,8 @@
                 clientY = e.touches[0].clientY;
             }
             return {
-                x: clientX - rect.left,
-                y: clientY - rect.top
+                x: (clientX - rect.left) * (canvas.width / rect.width),
+                y: (clientY - rect.top) * (canvas.height / rect.height)
             };
         }
 
