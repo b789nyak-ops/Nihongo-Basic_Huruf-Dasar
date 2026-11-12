@@ -71,10 +71,28 @@
                 </div>
             </div>
 
-            <!-- Bagian Materi / Teori Dasar -->
+            <!-- Bagian Materi / Teori Dasar & Sejarah -->
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
                 <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
                     <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    Sejarah & Fungsi Hiragana & Katakana
+                </h3>
+                <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <strong class="text-slate-800 block mb-1">📜 Sejarah Singkat</strong>
+                        Kedua huruf ini berakar dari aksara Tionghoa (Kanji). <strong>Hiragana</strong> disederhanakan dari bentuk utuh Kanji secara cursive (mengalir) oleh kaum wanita bangsawan zaman Heian. Sedangkan <strong>Katakana</strong> dibentuk dari potongan-potongan bagian Kanji oleh para biarawan Buddha untuk membantu membaca teks klasik.
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
+                        <strong class="text-slate-800 block mb-1">🎯 Penggunaan Utama</strong>
+                        <ul class="list-disc list-inside space-y-1 mt-1 text-xs text-slate-600">
+                            <li><strong>Hiragana:</strong> Digunakan untuk tata bahasa (partikel, akhiran kata kerja/sifat okurigana), kata asli Jepang yang tidak memiliki Kanji, serta sebagai furigana (panduan baca kanji).</li>
+                            <li><strong>Katakana:</strong> Digunakan khusus untuk menulis kata serapan dari bahasa asing (gairaigo), nama negara/kota luar negeri, nama ilmiah hewan/tumbuhan, serta efek suara/onomatope.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-slate-800 text-base flex items-center gap-2 pt-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     Panduan Kategori Huruf Jepang
                 </h3>
                 <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
@@ -83,7 +101,7 @@
                         Huruf inti pembentuk suku kata dasar serta modifikasi bunyi bersuara (tenten ゛) dan setengah bersuara (maru ゜).
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                        <strong class="text-slate-800 block mb-1">2. Yōon (Huruf Kombinasi: kya, sha, hya, rya, dll)</strong>
+                        <strong class="text-slate-800 block mb-1">2. Yōon (Huruf Kombinasi: kya, sha, hya, dll)</strong>
                         Gabungan huruf berbunyi baris 'i' dengan huruf kecil ゃ (ya), ゅ (yu), atau ょ (yo) untuk membentuk satu suku kata lunak.
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
@@ -94,7 +112,7 @@
             </div>
         </section>
 
-        <!-- 2. DAFTAR KANA (DIPISAH BERDASARKAN KATEGORI) -->
+        <!-- 2. DAFTAR KANA -->
         <section id="tab-daftar" class="hidden space-y-4">
             <div class="flex gap-2 bg-slate-200 p-1 rounded-xl">
                 <button onclick="switchKanaTab('hiragana')" id="btn-hira-tab" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition">Hiragana</button>
@@ -102,9 +120,7 @@
             </div>
             <p class="text-xs text-slate-500 text-center">Ketuk huruf untuk audio, atau ketuk centang untuk menandai sudah dihafal!</p>
             
-            <div id="kana-sections-container" class="space-y-6">
-                <!-- Konten kategori dirender secara dinamis lewat JS -->
-            </div>
+            <div id="kana-sections-container" class="space-y-6"></div>
         </section>
 
         <!-- 3. LATIHAN TULIS (CANVAS) -->
@@ -304,7 +320,7 @@
                     {ch: 'シャ', romaji: 'sha'}, {ch: 'シュ', romaji: 'shu'}, {ch: 'ショ', romaji: 'sho'},
                     {ch: 'チャ', romaji: 'cha'}, {ch: 'チュ', romaji: 'chu'}, {ch: 'チョ', romaji: 'cho'},
                     {ch: 'ニャ', romaji: 'nya'}, {ch: 'ニュ', romaji: 'nyu'}, {ch: 'ニョ', romaji: 'nyo'},
-                    {ch: 'ヒャ', romaji: 'hya'}, {ch: 'ヒュ', romaji: 'hyu'}, {ch: 'ヒョ', romaji: 'hyo'},
+                    {ch: 'ヒャ', romaji: 'hya'}, {ch: 'ヒュ', romaji: 'hyu'}, {ch: 'ヒょ', romaji: 'hyo'},
                     {ch: 'ミャ', romaji: 'mya'}, {ch: 'ミュ', romaji: 'myu'}, {ch: 'ミょ', romaji: 'myo'},
                     {ch: 'リャ', romaji: 'rya'}, {ch: 'リュ', romaji: 'ryu'}, {ch: 'リョ', romaji: 'ryo'},
                     {ch: 'ジャ', romaji: 'ja'}, {ch: 'ジュ', romaji: 'ju'}, {ch: 'ジョ', romaji: 'jo'},
@@ -316,10 +332,10 @@
             }
         ];
 
-        // Flatten data lengkap untuk latihan menulis dan kuis penuh
         const hiraganaData = hiraganaGroups.flatMap(g => g.items);
         const katakanaData = katakanaGroups.flatMap(g => g.items);
 
+        // 12 Kalimat Latihan Membaca Lengkap dengan Furigana
         const readingSentences = [
             {
                 html: '<ruby>海<rt>うみ</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くでキャンプをして、<ruby>料理<rt>りょうり</rt></ruby>を<ruby>作<rt>つく</rt></ruby>りました。',
@@ -330,6 +346,56 @@
                 html: '<ruby>日本<rt>にほん</rt></ruby>のロックを<ruby>聞<rt>き</rt></ruby>きながら、パソコンでゲームをします。',
                 romaji: 'Nihon no rokku o kikinagara, pasokon de geemu o shimasu.',
                 arti: 'Sambil mendengarkan rock Jepang, saya bermain game di komputer.'
+            },
+            {
+                html: '<ruby>明日<rt>あした</rt></ruby>、<ruby>友達<rt>ともだち</rt></ruby>と<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>に行きます。',
+                romaji: 'Ashita, tomodachi to eiga o mi ni ikimasu.',
+                arti: 'Besok, saya akan pergi menonton film bersama teman.'
+            },
+            {
+                html: '<ruby>朝<rt>あさ</rt></ruby>ご<ruby>飯<rt>はん</rt></ruby>にパンと<ruby>牛乳<rt>ぎゅうにゅう</rt></ruby>を<ruby>食<rt>た</rt></ruby>べました。',
+                romaji: 'Asagohan ni pan to gyuunyuu o tabemashita.',
+                arti: 'Saya makan roti dan minum susu untuk sarapan pagi.'
+            },
+            {
+                html: 'この<ruby>本<rt>ほん</rt></ruby>はとても<ruby>面白<rt>おもしろ</rt></ruby>いです。',
+                romaji: 'Kono hon wa totemo omoshiroi desu.',
+                arti: 'Buku ini sangat menarik.'
+            },
+            {
+                html: '<ruby>毎日<rt>まいにち</rt></ruby>、<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>をします。',
+                romaji: 'Mainichi, nihongo no benkyou o shimasu.',
+                arti: 'Setiap hari saya belajar bahasa Jepang.'
+            },
+            {
+                html: '<ruby>駅<rt>えき</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>で<ruby>母<rt>はは</rt></ruby>を<ruby>待<rt>ま</rt></ruby>っています。',
+                romaji: 'Eki no mae de haha o matte imasu.',
+                arti: 'Saya sedang menunggu Ibu di depan stasiun.'
+            },
+            {
+                html: '<ruby>週末<rt>しゅうまつ</rt></ruby>に<ruby>家族<rt>かぞく</rt></ruby>と<ruby>公園<rt>こうえん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きました。',
+                romaji: 'Shuumatsu ni kazoku to kouen e ikimashita.',
+                arti: 'Akhir pekan lalu saya pergi ke taman bersama keluarga.'
+            },
+            {
+                html: '<ruby>熱<rt>あつ</rt></ruby>いお<ruby>茶<rt>ちゃ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>んで、<ruby>体<rt>からだ</rt></ruby>が<ruby>温<rt>あたた</rt></ruby>まりました。',
+                romaji: 'Atsui ocha o nonde, karada ga atatamarimashita.',
+                arti: 'Saya minum teh hangat dan tubuh menjadi hangat.'
+            },
+            {
+                html: '<ruby>教室<rt>きょうしつ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>って、<ruby>先生<rt>せんせい</rt></ruby>にあいさつをしました。',
+                romaji: 'Kyoushitsu ni haitte, sensei ni aisatsu o shimashita.',
+                arti: 'Saya masuk ke ruang kelas dan menyapa guru.'
+            },
+            {
+                html: '<ruby>空<rt>そら</rt></ruby>が<ruby>青<rt>あお</rt></ruby>くて、とても<ruby>綺麗<rt>きれい</rt></ruby>な<ruby>日<rt>ひ</rt></ruby>です。',
+                romaji: 'Sora ga aokute, totemo kirei na hi desu.',
+                arti: 'Langitnya biru dan merupakan hari yang sangat indah.'
+            },
+            {
+                html: '<ruby>財布<rt>さいふ</rt></ruby>を<ruby>忘<rt>わす</rt></ruby>れたので、<ruby>家<rt>いえ</rt></ruby>に<ruby>戻<rt>もど</rt></ruby>りました。',
+                romaji: 'Saifu o wasureta node, ie ni modorimashita.',
+                arti: 'Karena saya lupa membawa dompet, saya kembali ke rumah.'
             }
         ];
 
@@ -338,6 +404,11 @@
                 html: '<ruby>私<rt>わたし</rt></ruby>の<ruby>趣味<rt>しゅみ</rt></ruby>は<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ることです。<ruby>大阪<rt>おおさか</rt></ruby>の<ruby>街<rt>まち</rt></ruby>を<ruby>歩<rt>ある</rt></ruby>いて、きれいな<ruby>景色<rt>けしき</rt></ruby>を<ruby>見<rt>み</rt></ruby>つけます。',
                 romaji: 'Watashi no shumi wa shashin o toru koto desu. Osaka no machi o aruite, kirei na keshiki o mitsukemasu.',
                 arti: 'Hobi saya adalah mengambil foto. Saya berjalan-jalan di kota Osaka dan menemukan pemandangan yang indah.'
+            }
+            {
+                html: '<ruby>来週<rt>らいしゅう</rt></ruby>の<ruby>日曜日<rt>にちようび</rt></ruby>、<ruby>家族<rt>かぞく</rt></ruby>みんなで<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>大<rt>おお</rt></ruby>きな<ruby>公園<rt>こうえん</rt></ruby>へお<ruby>花見<rt>はなみ</rt></ruby>に行きます。',
+                romaji: 'Raishuu no nichiyoubi, kazoku minna de Toukyou no ookina kouen e ohanami ni ikimasu. ',
+​                arti: 'Hari Minggu depan, seluruh keluarga akan pergi melihat bunga sakura di taman besar di Tokyo. '
             }
         ];
 
@@ -555,10 +626,8 @@
             const sourceData = typeVal === 'hiragana' ? hiraganaData : katakanaData;
 
             if(modeVal === 'acak') {
-                // Mengambil seluruh huruf secara acak (tanpa batasan 10 soal)
                 quizCurrentData = [...sourceData].sort(() => 0.5 - Math.random());
             } else {
-                // Mengambil seluruh huruf secara berurutan
                 quizCurrentData = [...sourceData];
             }
 
