@@ -615,11 +615,6 @@
             document.getElementById('write-romaji').innerText = item.romaji;
             document.getElementById('write-progress-text').innerText = `${currentWriteIdx + 1} / ${dataList.length}`;
             
-            let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
-            learnedList[item.ch] = true;
-            localStorage.setItem('learned_kana', JSON.stringify(learnedList));
-            updateStats();
-
             clearCanvas();
         }
 
