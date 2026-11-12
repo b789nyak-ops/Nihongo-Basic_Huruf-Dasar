@@ -38,7 +38,7 @@
             </div>
             <div>
                 <h1 class="font-bold text-base tracking-wide text-slate-100 flex items-center gap-1.5">
-                <span class="text-amber-400">Mater Japan</span>
+                <span class="text-amber-400">Master Japan</span>
                 </h1>
                 <p class="text-[11px] text-slate-400">Belajar Hiragana & Katakana</p>
             </div>
@@ -80,41 +80,40 @@
                 <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
                         <strong class="text-slate-800 block mb-1">📖 Sejarah Hiragana</strong>
-                        Hiragana dikembangkan pada zaman Heian oleh para wanita istana dari bentuk kanji yang disederhanakan (rumus kursif). Digunakan untuk tata bahasa, partikel, dan kata asli bahasa Jepang. Seperti Pembuatan nama orang asli jepang
+                        Hiragana dikembangkan pada zaman Heian oleh para wanita istana dari bentuk kanji yang disederhanakan. Digunakan untuk tata bahasa, partikel, dan kata asli bahasa Jepang.
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
                         <strong class="text-slate-800 block mb-1">📖 Sejarah Katakana</strong>
-                        Katakana dibentuk dari bagian-bagian terpisah karakter kanji (Dengan guratan yg sedikit kaku) oleh para biksu Buddha. Digunakan khusus untuk menulis kata serapan asing (gairaigo), Brand Merk asing, Nama orang asing.
+                        Katakana dibentuk dari bagian-bagian terpisah karakter kanji oleh para biksu Buddha. Digunakan khusus untuk menulis kata serapan asing (gairaigo), merek, dan nama orang asing.
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
                         <strong class="text-slate-800 block mb-1">✨ Tanda Dakuten (゛ Tenten) & Handakuten (゜ Maru)</strong>
                         Tenten mengubah bunyi konsonan tak bersuara menjadi bersuara (contoh: か /ka/ menjadi が /ga/). Maru khusus mengubah baris bunyi 'h' menjadi 'p' (contoh: は /ha/ menjadi ぱ /pa/).
                     </div>
-                    <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                        <strong class="text-slate-800 block mb-1">🔻 Huruf Kecil (Youon: ゃ, ゅ, ょ, っ)</strong>
-                        Ya, yu, yo kecil digabung dengan huruf berbunyi 'i' untuk menciptakan bunyi lunak (contoh: き + ゃ = きゃ /kya/). Sementara tsu kecil (っ) berfungsi untuk menahan konsonan berikutnya (konsonan ganda / double consonant).
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. DAFTAR KANA (DENGAN INTERAKSI HAFAL) -->
+        <!-- 2. DAFTAR KANA -->
         <section id="tab-daftar" class="hidden space-y-4">
             <div class="flex gap-2 bg-slate-200 p-1 rounded-xl">
                 <button onclick="switchKanaTab('hiragana')" id="btn-hira-tab" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition">Hiragana</button>
                 <button onclick="switchKanaTab('katakana')" id="btn-kata-tab" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition">Katakana</button>
             </div>
             <p class="text-xs text-slate-500 text-center">Ketuk huruf untuk mendengarkan audio, atau ketuk tombol centang untuk menandai sudah dihafal!</p>
-            <div id="kana-grid" class="grid grid-cols-5 gap-2.5">
-                <!-- Data dimasukkan via JS -->
-            </div>
+            <div id="kana-grid" class="grid grid-cols-5 gap-2.5"></div>
         </section>
 
         <!-- 3. LATIHAN TULIS (CANVAS) -->
         <section id="tab-tulis" class="hidden space-y-4">
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 text-center space-y-4">
+                <div class="flex gap-2 bg-slate-200 p-1 rounded-xl">
+                    <button onclick="switchWriteMode('hiragana')" id="btn-write-hira" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition">Hiragana</button>
+                    <button onclick="switchWriteMode('katakana')" id="btn-write-kata" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition">Katakana</button>
+                </div>
+
                 <div class="flex justify-between items-center">
-                    <span id="write-info" class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Dasar (Gojuon)</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Lengkap (Gojuon, Dakuten & Maru)</span>
                     <span id="write-progress-text" class="text-xs text-slate-400 font-medium">1 / 46</span>
                 </div>
                 
@@ -133,7 +132,6 @@
                     </button>
                 </div>
 
-                <!-- Tombol Navigasi Tulis -->
                 <div class="grid grid-cols-3 gap-2 pt-2">
                     <button onclick="prevWriteChar()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">&larr; Sebelumnya</button>
                     <button onclick="clearCanvas()" class="py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition">Hapus</button>
@@ -142,8 +140,28 @@
             </div>
         </section>
 
-        <!-- 4. KUIS PILIHAN GANDA -->
+        <!-- 4. KUIS PILIHAN GANDA (DENGAN PILIHAN JENIS HURUF & MODE ACAK/URUT) -->
         <section id="tab-kuis" class="hidden space-y-4">
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <h3 class="font-bold text-slate-800 text-sm">Pengaturan Kuis</h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="text-[11px] text-slate-500 font-medium block mb-1">Jenis Huruf</label>
+                        <select id="quiz-type-select" onchange="initQuiz()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:outline-none">
+                            <option value="hiragana">Hiragana (Lengkap)</option>
+                            <option value="katakana">Katakana (Lengkap)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[11px] text-slate-500 font-medium block mb-1">Mode Soal</label>
+                        <select id="quiz-mode-select" onchange="initQuiz()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:outline-none">
+                            <option value="acak">Acak (Random)</option>
+                            <option value="urut">Urut (Berurutan)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
             <div id="quiz-card-wrapper" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-5">
                 <div class="flex justify-between items-center border-b border-slate-100 pb-3">
                     <span id="quiz-counter" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Soal 1/10</span>
@@ -233,11 +251,11 @@
             {ch: 'マ', romaji: 'ma'}, {ch: 'ミ', romaji: 'mi'}, {ch: 'ム', romaji: 'mu'}, {ch: 'メ', romaji: 'me'}, {ch: 'モ', romaji: 'mo'},
             {ch: 'ヤ', romaji: 'ya'}, {ch: 'ユ', romaji: 'yu'}, {ch: 'ヨ', romaji: 'yo'},
             {ch: 'ラ', romaji: 'ra'}, {ch: 'リ', romaji: 'ri'}, {ch: 'ル', romaji: 'ru'}, {ch: 'レ', romaji: 're'}, {ch: 'ロ', romaji: 'ro'},
+            {ch: 'わ'.toUpperCase(), romaji: 'wa'}, {ch: 'を'.toUpperCase(), romaji: 'wo'}, {ch: 'ん'.toUpperCase(), romaji: 'n'}, // Cadangan aman
             {ch: 'ワ', romaji: 'wa'}, {ch: 'ヲ', romaji: 'wo'}, {ch: 'ン', romaji: 'n'},
             {ch: 'ガ', romaji: 'ga'}, {ch: 'ギ', romaji: 'gi'}, {ch: 'グ', romaji: 'gu'}, {ch: 'ゲ', romaji: 'ge'}, {ch: 'ゴ', romaji: 'go'},
             {ch: 'ザ', romaji: 'za'}, {ch: 'ジ', romaji: 'ji'}, {ch: 'ズ', romaji: 'zu'}, {ch: 'ゼ', romaji: 'ze'}, {ch: 'ゾ', romaji: 'zo'},
             {ch: 'ダ', romaji: 'da'}, {ch: 'ヂ', romaji: 'dji'}, {ch: 'ヅ', romaji: 'dzu'}, {ch: 'デ', romaji: 'de'}, {ch: 'ド', romaji: 'do'},
-            {ch: 'ば'.toUpperCase(), romaji: 'ba'}, {ch: 'び'.toUpperCase(), romaji: 'bi'}, {ch: 'ぶ'.toUpperCase(), romaji: 'bu'}, {ch: 'べ'.toUpperCase(), romaji: 'be'}, {ch: 'ぼ'.toUpperCase(), romaji: 'bo'}, // Di-handle via array di bawah
             {ch: 'バ', romaji: 'ba'}, {ch: 'ビ', romaji: 'bi'}, {ch: 'ブ', romaji: 'bu'}, {ch: 'ベ', romaji: 'be'}, {ch: 'ボ', romaji: 'bo'},
             {ch: 'パ', romaji: 'pa'}, {ch: 'ピ', romaji: 'pi'}, {ch: 'プ', romaji: 'pu'}, {ch: 'ペ', romaji: 'pe'}, {ch: 'ポ', romaji: 'po'}
         ];
@@ -267,11 +285,6 @@
                 html: '<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、コーヒーを<ruby>飲<rt>の</rt></ruby>みながら<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。',
                 romaji: 'Ashita no asa, koohii o nominagara nihongo o benkyou shimasu.',
                 arti: 'Besok pagi, saya akan belajar bahasa Jepang sambil minum kopi.'
-            },
-            {
-                html: 'バイクの<ruby>後<rt>うし</rt></ruby>ろに<ruby>可愛<rt>かわい</rt></ruby>いアイスクリームのカートを<ruby>作<rt>つく</rt></ruby>ります。',
-                romaji: 'Baiku no ushiro ni kawaii aisukuriimu no kaato o tsukurimasu.',
-                arti: 'Saya membuat gerobak es krim yang lucu di belakang sepeda motor.'
             }
         ];
 
@@ -284,11 +297,12 @@
             {
                 html: '<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>続<rt>つづ</rt></ruby>けることが<ruby>大切<rt>たいせつ</rt></ruby>です。アプリを<ruby>使<rt>つか</rt></ruby>って、ひらがなとカタカナをしっかり<ruby>覚<rt>おぼ</rt></ruby>えます。',
                 romaji: 'Nihongo no benkyou wa mainichi tsuzukeru koto ga taisetsu desu. Apuri o tsukatte, hiragana to katakana o sikkari oboemasu.',
-                arti: 'Belajar bahasa Jepang penting untuk dilanjutkan setiap hari. Menggunakan aplikasi untuk menghafal hiragana dan katakana dengan kuat.'
+                arti: 'Belajar bahasa Jepang penting untuk dilanjutkan setiap hari. Menggunakan aplikasi untuk menghafal hiragana dan katakana.'
             }
         ];
 
         let currentWriteIdx = 0;
+        let currentWriteType = 'hiragana';
         let quizScore = 0;
         let quizCurrentIdx = 0;
         let quizCurrentData = [];
@@ -325,7 +339,6 @@
             }
         }
 
-        // Render Daftar Kana dengan Fitur Checklist Hafal Interaktif
         function renderDaftarKana(type) {
             const grid = document.getElementById('kana-grid');
             grid.innerHTML = '';
@@ -361,13 +374,25 @@
             learnedList[ch] = !learnedList[ch];
             localStorage.setItem('learned_kana', JSON.stringify(learnedList));
             
-            // Refresh tampilan grid aktif saat ini
             const isHiraActive = document.getElementById('btn-hira-tab').classList.contains('bg-white');
             renderDaftarKana(isHiraActive ? 'hiragana' : 'katakana');
             updateStats();
         }
 
-        // Kanvas Latihan Tulis
+        function switchWriteMode(type) {
+            currentWriteType = type;
+            currentWriteIdx = 0;
+            if(type === 'hiragana') {
+                document.getElementById('btn-write-hira').className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition";
+                document.getElementById('btn-write-kata').className = "flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition";
+            } else {
+                document.getElementById('btn-write-kata').className = "flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition";
+                document.getElementById('btn-write-hira').className = "flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition";
+            }
+            updateWriteView();
+        }
+
+        // Canvas Latihan Tulis
         const canvas = document.getElementById('drawCanvas');
         const ctx = canvas.getContext('2d');
         let painting = false;
@@ -433,13 +458,13 @@
         }
 
         function updateWriteView() {
-            const item = hiraganaData[currentWriteIdx];
+            const dataList = currentWriteType === 'hiragana' ? hiraganaData : katakanaData;
+            const item = dataList[currentWriteIdx];
             document.getElementById('write-char').innerText = item.ch;
             document.getElementById('write-guide').innerText = item.ch;
             document.getElementById('write-romaji').innerText = item.romaji;
-            document.getElementById('write-progress-text').innerText = `${currentWriteIdx + 1} / ${hiraganaData.length}`;
+            document.getElementById('write-progress-text').innerText = `${currentWriteIdx + 1} / ${dataList.length}`;
             
-            // Otomatis tandai sebagai hafal saat berlatih tulis
             let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
             learnedList[item.ch] = true;
             localStorage.setItem('learned_kana', JSON.stringify(learnedList));
@@ -449,46 +474,33 @@
         }
 
         function nextWriteChar() {
-            currentWriteIdx = (currentWriteIdx + 1) % hiraganaData.length;
+            const dataList = currentWriteType === 'hiragana' ? hiraganaData : katakanaData;
+            currentWriteIdx = (currentWriteIdx + 1) % dataList.length;
             updateWriteView();
         }
 
         function prevWriteChar() {
-            currentWriteIdx = (currentWriteIdx - 1 + hiraganaData.length) % hiraganaData.length;
+            const dataList = currentWriteType === 'hiragana' ? hiraganaData : katakanaData;
+            currentWriteIdx = (currentWriteIdx - 1 + dataList.length) % dataList.length;
             updateWriteView();
         }
 
-        // Kuis Pilihan Ganda
+        // Pengaturan Kuis Dinamis (Hiragana/Katakana + Acak/Urut)
         function initQuiz() {
             quizScore = 0;
             quizCurrentIdx = 0;
             userAnswersHistory = {};
-            quizCurrentData = [...hiraganaData].sort(() => 0.5 - Math.random()).slice(0, 10);
-            
-            document.getElementById('tab-kuis').innerHTML = `
-                <div id="quiz-card-wrapper" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-5">
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                        <span id="quiz-counter" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Soal 1/10</span>
-                        <span class="text-xs font-bold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full">Skor: <span id="quiz-score">0</span></span>
-                    </div>
 
-                    <div class="text-center py-6">
-                        <span id="quiz-question" class="text-7xl font-black text-slate-800 block mb-2">あ</span>
-                        <p class="text-xs text-slate-400">Pilih bacaan Romaji yang tepat!</p>
-                    </div>
+            const typeVal = document.getElementById('quiz-type-select').value;
+            const modeVal = document.getElementById('quiz-mode-select').value;
+            const sourceData = typeVal === 'hiragana' ? hiraganaData : katakanaData;
 
-                    <div id="quiz-options" class="grid grid-cols-2 gap-3"></div>
+            if(modeVal === 'acak') {
+                quizCurrentData = [...sourceData].sort(() => 0.5 - Math.random()).slice(0, 10);
+            } else {
+                quizCurrentData = [...sourceData].slice(0, 10); // 10 soal pertama secara berurutan
+            }
 
-                    <div class="flex gap-2 pt-2">
-                        <button id="quiz-prev-btn" onclick="prevQuizQuestion()" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-bold transition">
-                            &larr; Sebelumnya
-                        </button>
-                        <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="flex-1 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-bold transition hidden">
-                            Lanjut &rarr;
-                        </button>
-                    </div>
-                </div>
-            `;
             loadQuizQuestion();
         }
 
@@ -500,10 +512,10 @@
                 });
                 quizScore = finalScore;
 
-                document.getElementById('tab-kuis').innerHTML = `
-                    <div class="bg-white p-6 rounded-2xl shadow-sm text-center space-y-4">
+                document.getElementById('quiz-card-wrapper').innerHTML = `
+                    <div class="text-center py-6 space-y-4">
                         <h3 class="text-xl font-bold text-slate-800">Kuis Selesai! 🎉</h3>
-                        <p class="text-sm text-slate-600">Skor Akhir Anda: <strong class="text-emerald-600 text-lg">${quizScore}/10</strong></p>
+                        <p class="text-sm text-slate-600">Skor Akhir Anda: <strong class="text-emerald-600 text-lg">${quizScore}/${quizCurrentData.length}</strong></p>
                         <button onclick="initQuiz()" class="w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-sm">Ulangi Kuis</button>
                     </div>
                 `;
@@ -511,7 +523,7 @@
                 return;
             }
 
-            document.getElementById('quiz-counter').innerText = `Soal ${quizCurrentIdx + 1}/10`;
+            document.getElementById('quiz-counter').innerText = `Soal ${quizCurrentIdx + 1}/${quizCurrentData.length}`;
             document.getElementById('quiz-score').innerText = quizScore;
 
             const prevBtn = document.getElementById('quiz-prev-btn');
@@ -528,11 +540,14 @@
             const currentItem = quizCurrentData[quizCurrentIdx];
             document.getElementById('quiz-question').innerText = currentItem.ch;
 
+            const typeVal = document.getElementById('quiz-type-select').value;
+            const sourcePool = typeVal === 'hiragana' ? hiraganaData : katakanaData;
+
             let options = currentItem._cachedOptions;
             if(!options) {
                 options = [currentItem.romaji];
                 while(options.length < 4) {
-                    let randomOpt = hiraganaData[Math.floor(Math.random() * hiraganaData.length)].romaji;
+                    let randomOpt = sourcePool[Math.floor(Math.random() * sourcePool.length)].romaji;
                     if(!options.includes(randomOpt)) options.push(randomOpt);
                 }
                 options.sort(() => 0.5 - Math.random());
@@ -655,7 +670,6 @@
             }
         }
 
-        // Kalkulasi Progres Berdasarkan Huruf yang Benar-Benar Dihafal
         function updateStats(newScore = null) {
             let stats = JSON.parse(localStorage.getItem('kana_stats')) || { skor: 0 };
             if(newScore !== null && newScore > stats.skor) {
@@ -663,7 +677,6 @@
             }
             localStorage.setItem('kana_stats', JSON.stringify(stats));
 
-            // Hitung jumlah huruf yang dihafal dari LocalStorage
             let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
             let totalHafal = Object.values(learnedList).filter(Boolean).length;
 
