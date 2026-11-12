@@ -58,11 +58,11 @@
                     <span class="text-9xl font-bold">あ</span>
                 </div>
                 <h2 class="text-xl font-bold mb-1">Selamat Belajar!</h2>
-                <p class="text-sm text-slate-300 mb-4">Kuasai huruf dasar Jepang untuk persiapan JLPT N4 & JFT-Basic.</p>
+                <p class="text-sm text-slate-300 mb-4">Kuasai huruf dasar, dakuten, hingga yōon (huruf kombinasi) untuk JLPT N5 & JFT-Basic.</p>
                 <div class="grid grid-cols-2 gap-3 pt-2 border-t border-slate-700">
                     <div>
                         <span class="text-xs text-slate-400 block">Huruf Dihafal</span>
-                        <span id="stat-hafal" class="text-2xl font-bold text-amber-400">0</span><span class="text-sm text-slate-400">/92</span>
+                        <span id="stat-hafal" class="text-2xl font-bold text-amber-400">0</span><span class="text-sm text-slate-400" id="stat-total-label">/150</span>
                     </div>
                     <div>
                         <span class="text-xs text-slate-400 block">Skor Kuis Tertinggi</span>
@@ -75,33 +75,36 @@
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
                 <h3 class="font-bold text-slate-800 text-base flex items-center gap-2">
                     <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                    Materi Dasar & Sejarah Huruf Jepang
+                    Panduan Kategori Huruf Jepang
                 </h3>
                 <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                        <strong class="text-slate-800 block mb-1">📖 Sejarah Hiragana</strong>
-                        Hiragana dikembangkan pada zaman Heian oleh para wanita istana dari bentuk kanji yang disederhanakan. Digunakan untuk tata bahasa, partikel, dan kata asli bahasa Jepang.
+                        <strong class="text-slate-800 block mb-1">1. Gojuon Dasar, Dakuten & Handakuten</strong>
+                        Huruf inti pembentuk suku kata dasar serta modifikasi bunyi bersuara (tenten ゛) dan setengah bersuara (maru ゜).
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                        <strong class="text-slate-800 block mb-1">📖 Sejarah Katakana</strong>
-                        Katakana dibentuk dari bagian-bagian terpisah karakter kanji oleh para biksu Buddha. Digunakan khusus untuk menulis kata serapan asing (gairaigo), merek, dan nama orang asing.
+                        <strong class="text-slate-800 block mb-1">2. Yōon (Huruf Kombinasi: kya, sha, hya, rya, dll)</strong>
+                        Gabungan huruf berbunyi baris 'i' dengan huruf kecil ゃ (ya), ゅ (yu), atau ょ (yo) untuk membentuk satu suku kata lunak (misal: き + ゃ = きゃ /kya/).
                     </div>
                     <div class="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                        <strong class="text-slate-800 block mb-1">✨ Tanda Dakuten (゛ Tenten) & Handakuten (゜ Maru)</strong>
-                        Tenten mengubah bunyi konsonan tak bersuara menjadi bersuara (contoh: か /ka/ menjadi が /ga/). Maru khusus mengubah baris bunyi 'h' menjadi 'p' (contoh: は /ha/ menjadi ぱ /pa/).
+                        <strong class="text-slate-800 block mb-1">3. Sokuon & Kombinasi Vokal Khusus Katakana</strong>
+                        Tsu kecil (っ/ッ) berfungsi sebagai konsonan ganda, sementara vokal kecil Katakana ( seperti ェ, ィ, ァ) digunakan untuk kata serapan bahasa asing yang akurat.
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. DAFTAR KANA -->
+        <!-- 2. DAFTAR KANA (DIPISAH BERDASARKAN KATEGORI) -->
         <section id="tab-daftar" class="hidden space-y-4">
             <div class="flex gap-2 bg-slate-200 p-1 rounded-xl">
                 <button onclick="switchKanaTab('hiragana')" id="btn-hira-tab" class="flex-1 py-2 text-xs font-bold rounded-lg bg-white shadow-sm text-slate-800 transition">Hiragana</button>
                 <button onclick="switchKanaTab('katakana')" id="btn-kata-tab" class="flex-1 py-2 text-xs font-bold rounded-lg text-slate-600 transition">Katakana</button>
             </div>
-            <p class="text-xs text-slate-500 text-center">Ketuk huruf untuk mendengarkan audio, atau ketuk tombol centang untuk menandai sudah dihafal!</p>
-            <div id="kana-grid" class="grid grid-cols-5 gap-2.5"></div>
+            <p class="text-xs text-slate-500 text-center">Ketuk huruf untuk audio, atau ketuk centang untuk menandai sudah dihafal!</p>
+            
+            <div id="kana-sections-container" class="space-y-6">
+                <!-- Konten kategori dirender secara dinamis lewat JS -->
+            </div>
         </section>
 
         <!-- 3. LATIHAN TULIS (CANVAS) -->
@@ -113,8 +116,8 @@
                 </div>
 
                 <div class="flex justify-between items-center">
-                    <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Lengkap (Gojuon, Dakuten & Maru)</span>
-                    <span id="write-progress-text" class="text-xs text-slate-400 font-medium">1 / 46</span>
+                    <span class="text-xs font-bold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Termasuk Yōon & Kombinasi</span>
+                    <span id="write-progress-text" class="text-xs text-slate-400 font-medium">1 / 75</span>
                 </div>
                 
                 <div class="relative w-48 h-48 mx-auto bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl flex items-center justify-center overflow-hidden">
@@ -140,7 +143,7 @@
             </div>
         </section>
 
-        <!-- 4. KUIS PILIHAN GANDA (DENGAN PILIHAN JENIS HURUF & MODE ACAK/URUT) -->
+        <!-- 4. KUIS PILIHAN GANDA -->
         <section id="tab-kuis" class="hidden space-y-4">
             <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
                 <h3 class="font-bold text-slate-800 text-sm">Pengaturan Kuis</h3>
@@ -148,8 +151,8 @@
                     <div>
                         <label class="text-[11px] text-slate-500 font-medium block mb-1">Jenis Huruf</label>
                         <select id="quiz-type-select" onchange="initQuiz()" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-700 focus:outline-none">
-                            <option value="hiragana">Hiragana (Lengkap)</option>
-                            <option value="katakana">Katakana (Lengkap)</option>
+                            <option value="hiragana">Hiragana (Lengkap + Yōon)</option>
+                            <option value="katakana">Katakana (Lengkap + Yōon)</option>
                         </select>
                     </div>
                     <div>
@@ -223,42 +226,99 @@
 
     <!-- JavaScript Utama -->
     <script>
-        const hiraganaData = [
-            {ch: 'あ', romaji: 'a'}, {ch: 'い', romaji: 'i'}, {ch: 'う', romaji: 'u'}, {ch: 'え', romaji: 'e'}, {ch: 'お', romaji: 'o'},
-            {ch: 'か', romaji: 'ka'}, {ch: 'き', romaji: 'ki'}, {ch: 'く', romaji: 'ku'}, {ch: 'け', romaji: 'ke'}, {ch: 'こ', romaji: 'ko'},
-            {ch: 'さ', romaji: 'sa'}, {ch: 'し', romaji: 'shi'}, {ch: 'す', romaji: 'su'}, {ch: 'せ', romaji: 'se'}, {ch: 'そ', romaji: 'so'},
-            {ch: 'た', romaji: 'ta'}, {ch: 'ち', romaji: 'chi'}, {ch: 'つ', romaji: 'tsu'}, {ch: 'て', romaji: 'te'}, {ch: 'と', romaji: 'to'},
-            {ch: 'な', romaji: 'na'}, {ch: 'に', romaji: 'ni'}, {ch: 'ぬ', romaji: 'nu'}, {ch: 'ね', romaji: 'ne'}, {ch: 'の', romaji: 'no'},
-            {ch: 'は', romaji: 'ha'}, {ch: 'ひ', romaji: 'hi'}, {ch: 'ふ', romaji: 'fu'}, {ch: 'へ', romaji: 'he'}, {ch: 'ほ', romaji: 'ho'},
-            {ch: 'ま', romaji: 'ma'}, {ch: 'み', romaji: 'mi'}, {ch: 'む', romaji: 'mu'}, {ch: 'め', romaji: 'me'}, {ch: 'も', romaji: 'mo'},
-            {ch: 'や', romaji: 'ya'}, {ch: 'ゆ', romaji: 'yu'}, {ch: 'よ', romaji: 'yo'},
-            {ch: 'ら', romaji: 'ra'}, {ch: 'り', romaji: 'ri'}, {ch: 'る', romaji: 'ru'}, {ch: 'れ', romaji: 're'}, {ch: 'ろ', romaji: 'ro'},
-            {ch: 'わ', romaji: 'wa'}, {ch: 'を', romaji: 'wo'}, {ch: 'ん', romaji: 'n'},
-            {ch: 'が', romaji: 'ga'}, {ch: 'ぎ', romaji: 'gi'}, {ch: 'ぐ', romaji: 'gu'}, {ch: 'げ', romaji: 'ge'}, {ch: 'ご', romaji: 'go'},
-            {ch: 'ざ', romaji: 'za'}, {ch: 'じ', romaji: 'ji'}, {ch: 'ず', romaji: 'zu'}, {ch: 'ぜ', romaji: 'ze'}, {ch: 'ぞ', romaji: 'zo'},
-            {ch: 'だ', romaji: 'da'}, {ch: 'ぢ', romaji: 'dji'}, {ch: 'づ', romaji: 'dzu'}, {ch: 'で', romaji: 'de'}, {ch: 'ど', romaji: 'do'},
-            {ch: 'ば', romaji: 'ba'}, {ch: 'び', romaji: 'bi'}, {ch: 'ぶ', romaji: 'bu'}, {ch: 'べ', romaji: 'be'}, {ch: 'ぼ', romaji: 'bo'},
-            {ch: 'ぱ', romaji: 'pa'}, {ch: 'ぴ', romaji: 'pi'}, {ch: 'ぷ', romaji: 'pu'}, {ch: 'ぺ', romaji: 'pe'}, {ch: 'ぽ', romaji: 'po'}
+        const hiraganaGroups = [
+            {
+                title: "Gojuon Dasar (Huruf Utama)",
+                items: [
+                    {ch: 'あ', romaji: 'a'}, {ch: 'い', romaji: 'i'}, {ch: 'う', romaji: 'u'}, {ch: 'え', romaji: 'e'}, {ch: 'お', romaji: 'o'},
+                    {ch: 'か', romaji: 'ka'}, {ch: 'き', romaji: 'ki'}, {ch: 'く', romaji: 'ku'}, {ch: 'け', romaji: 'ke'}, {ch: 'こ', romaji: 'ko'},
+                    {ch: 'さ', romaji: 'sa'}, {ch: 'し', romaji: 'shi'}, {ch: 'す', romaji: 'su'}, {ch: 'せ', romaji: 'se'}, {ch: 'そ', romaji: 'so'},
+                    {ch: 'た', romaji: 'ta'}, {ch: 'ち', romaji: 'chi'}, {ch: 'つ', romaji: 'tsu'}, {ch: 'て', romaji: 'te'}, {ch: 'と', romaji: 'to'},
+                    {ch: 'な', romaji: 'na'}, {ch: 'に', romaji: 'ni'}, {ch: 'ぬ', romaji: 'nu'}, {ch: 'ね', romaji: 'ne'}, {ch: 'の', romaji: 'no'},
+                    {ch: 'は', romaji: 'ha'}, {ch: 'ひ', romaji: 'hi'}, {ch: 'ふ', romaji: 'fu'}, {ch: 'へ', romaji: 'he'}, {ch: 'ほ', romaji: 'ho'},
+                    {ch: 'ま', romaji: 'ma'}, {ch: 'み', romaji: 'mi'}, {ch: 'む', romaji: 'mu'}, {ch: 'め', romaji: 'me'}, {ch: 'も', romaji: 'mo'},
+                    {ch: 'や', romaji: 'ya'}, {ch: 'ゆ', romaji: 'yu'}, {ch: 'よ', romaji: 'yo'},
+                    {ch: 'ら', romaji: 'ra'}, {ch: 'り', romaji: 'ri'}, {ch: 'る', romaji: 'ru'}, {ch: 'れ', romaji: 're'}, {ch: 'ろ', romaji: 'ro'},
+                    {ch: 'わ', romaji: 'wa'}, {ch: 'を', romaji: 'wo'}, {ch: 'ん', romaji: 'n'}
+                ]
+            },
+            {
+                title: "Dakuten (゛) & Handakuten (゜)",
+                items: [
+                    {ch: 'が', romaji: 'ga'}, {ch: 'ぎ', romaji: 'gi'}, {ch: 'ぐ', romaji: 'gu'}, {ch: 'げ', romaji: 'ge'}, {ch: 'ご', romaji: 'go'},
+                    {ch: 'ざ', romaji: 'za'}, {ch: 'じ', romaji: 'ji'}, {ch: 'ず', romaji: 'zu'}, {ch: 'ぜ', romaji: 'ze'}, {ch: 'ぞ', romaji: 'zo'},
+                    {ch: 'だ', romaji: 'da'}, {ch: 'ぢ', romaji: 'dji'}, {ch: 'づ', romaji: 'dzu'}, {ch: 'で', romaji: 'de'}, {ch: 'ど', romaji: 'do'},
+                    {ch: 'ば', romaji: 'ba'}, {ch: 'び', romaji: 'bi'}, {ch: 'ぶ', romaji: 'bu'}, {ch: 'べ', romaji: 'be'}, {ch: 'ぼ', romaji: 'bo'},
+                    {ch: 'ぱ', romaji: 'pa'}, {ch: 'ぴ', romaji: 'pi'}, {ch: 'ぷ', romaji: 'pu'}, {ch: 'ぺ', romaji: 'pe'}, {ch: 'ぽ', romaji: 'po'}
+                ]
+            },
+            {
+                title: "Yōon (Huruf Kombinasi: kya, sha, hya, dll)",
+                items: [
+                    {ch: 'きゃ', romaji: 'kya'}, {ch: 'きゅ', romaji: 'kyu'}, {ch: 'きょ', romaji: 'kyo'},
+                    {ch: 'しゃ', romaji: 'sha'}, {ch: 'しゅ', romaji: 'shu'}, {ch: 'しょ', romaji: 'sho'},
+                    {ch: 'ちゃ', romaji: 'cha'}, {ch: 'ちゅ', romaji: 'chu'}, {ch: 'ちょ', romaji: 'cho'},
+                    {ch: 'にゃ', romaji: 'nya'}, {ch: 'にゅ', romaji: 'nyu'}, {ch: 'にょ', romaji: 'nyo'},
+                    {ch: 'ひゃ', romaji: 'hya'}, {ch: 'ひゅ', romaji: 'hyu'}, {ch: 'ひょ', romaji: 'hyo'},
+                    {ch: 'みゃ', romaji: 'mya'}, {ch: 'みゅ', romaji: 'myu'}, {ch: 'みょ', romaji: 'myo'},
+                    {ch: 'りゃ', romaji: 'rya'}, {ch: 'りゅ', romaji: 'ryu'}, {ch: 'りょ', romaji: 'ryo'},
+                    {ch: 'ぎゃ', romaji: 'gya'}, {ch: 'ぎゅ', romaji: 'gyu'}, {ch: 'ぎょ', romaji: 'gyo'},
+                    {ch: 'じゃ', romaji: 'ja'}, {ch: 'じゅ', romaji: 'ju'}, {ch: 'じょ', romaji: 'jo'},
+                    {ch: 'びゃ', romaji: 'bya'}, {ch: 'びゅ', romaji: 'byu'}, {ch: 'びょ', romaji: 'byo'},
+                    {ch: 'ぴゃ', romaji: 'pya'}, {ch: 'ぴゅ', romaji: 'pyu'}, {ch: 'ぴょ', romaji: 'pyo'},
+                    {ch: 'っ', romaji: 'tsu (sokuon)'}
+                ]
+            }
         ];
 
-        const katakanaData = [
-            {ch: 'ア', romaji: 'a'}, {ch: 'イ', romaji: 'i'}, {ch: 'ウ', romaji: 'u'}, {ch: 'エ', romaji: 'e'}, {ch: 'オ', romaji: 'o'},
-            {ch: 'カ', romaji: 'ka'}, {ch: 'キ', romaji: 'ki'}, {ch: 'ク', romaji: 'ku'}, {ch: 'ケ', romaji: 'ke'}, {ch: 'コ', romaji: 'ko'},
-            {ch: 'サ', romaji: 'sa'}, {ch: 'シ', romaji: 'shi'}, {ch: 'ス', romaji: 'su'}, {ch: 'セ', romaji: 'se'}, {ch: 'ソ', romaji: 'so'},
-            {ch: 'タ', romaji: 'ta'}, {ch: 'チ', romaji: 'chi'}, {ch: 'ツ', romaji: 'tsu'}, {ch: 'テ', romaji: 'te'}, {ch: 'ト', romaji: 'to'},
-            {ch: 'ナ', romaji: 'na'}, {ch: 'ニ', romaji: 'ni'}, {ch: 'ヌ', romaji: 'nu'}, {ch: 'ネ', romaji: 'ne'}, {ch: 'ノ', romaji: 'no'},
-            {ch: 'ハ', romaji: 'ha'}, {ch: 'ヒ', romaji: 'hi'}, {ch: 'フ', romaji: 'fu'}, {ch: 'ヘ', romaji: 'he'}, {ch: 'ホ', romaji: 'ho'},
-            {ch: 'マ', romaji: 'ma'}, {ch: 'ミ', romaji: 'mi'}, {ch: 'ム', romaji: 'mu'}, {ch: 'メ', romaji: 'me'}, {ch: 'モ', romaji: 'mo'},
-            {ch: 'ヤ', romaji: 'ya'}, {ch: 'ユ', romaji: 'yu'}, {ch: 'ヨ', romaji: 'yo'},
-            {ch: 'ラ', romaji: 'ra'}, {ch: 'リ', romaji: 'ri'}, {ch: 'ル', romaji: 'ru'}, {ch: 'レ', romaji: 're'}, {ch: 'ロ', romaji: 'ro'},
-            {ch: 'わ'.toUpperCase(), romaji: 'wa'}, {ch: 'を'.toUpperCase(), romaji: 'wo'}, {ch: 'ん'.toUpperCase(), romaji: 'n'}, // Cadangan aman
-            {ch: 'ワ', romaji: 'wa'}, {ch: 'ヲ', romaji: 'wo'}, {ch: 'ン', romaji: 'n'},
-            {ch: 'ガ', romaji: 'ga'}, {ch: 'ギ', romaji: 'gi'}, {ch: 'グ', romaji: 'gu'}, {ch: 'ゲ', romaji: 'ge'}, {ch: 'ゴ', romaji: 'go'},
-            {ch: 'ザ', romaji: 'za'}, {ch: 'ジ', romaji: 'ji'}, {ch: 'ズ', romaji: 'zu'}, {ch: 'ゼ', romaji: 'ze'}, {ch: 'ゾ', romaji: 'zo'},
-            {ch: 'ダ', romaji: 'da'}, {ch: 'ヂ', romaji: 'dji'}, {ch: 'ヅ', romaji: 'dzu'}, {ch: 'デ', romaji: 'de'}, {ch: 'ド', romaji: 'do'},
-            {ch: 'バ', romaji: 'ba'}, {ch: 'ビ', romaji: 'bi'}, {ch: 'ブ', romaji: 'bu'}, {ch: 'ベ', romaji: 'be'}, {ch: 'ボ', romaji: 'bo'},
-            {ch: 'パ', romaji: 'pa'}, {ch: 'ピ', romaji: 'pi'}, {ch: 'プ', romaji: 'pu'}, {ch: 'ペ', romaji: 'pe'}, {ch: 'ポ', romaji: 'po'}
+        const katakanaGroups = [
+            {
+                title: "Gojuon Dasar (Huruf Utama)",
+                items: [
+                    {ch: 'ア', romaji: 'a'}, {ch: 'イ', romaji: 'i'}, {ch: 'ウ', romaji: 'u'}, {ch: 'エ', romaji: 'e'}, {ch: 'オ', romaji: 'o'},
+                    {ch: 'カ', romaji: 'ka'}, {ch: 'キ', romaji: 'ki'}, {ch: 'ク', romaji: 'ku'}, {ch: 'ケ', romaji: 'ke'}, {ch: 'コ', romaji: 'ko'},
+                    {ch: 'サ', romaji: 'sa'}, {ch: 'シ', romaji: 'shi'}, {ch: 'ス', romaji: 'su'}, {ch: 'セ', romaji: 'se'}, {ch: 'ソ', romaji: 'so'},
+                    {ch: 'タ', romaji: 'ta'}, {ch: 'チ', romaji: 'chi'}, {ch: 'ツ', romaji: 'tsu'}, {ch: 'テ', romaji: 'te'}, {ch: 'ト', romaji: 'to'},
+                    {ch: 'ナ', romaji: 'na'}, {ch: 'ニ', romaji: 'ni'}, {ch: 'ヌ', romaji: 'nu'}, {ch: 'ネ', romaji: 'ne'}, {ch: 'ノ', romaji: 'no'},
+                    {ch: 'ハ', romaji: 'ha'}, {ch: 'ヒ', romaji: 'hi'}, {ch: 'フ', romaji: 'fu'}, {ch: 'ヘ', romaji: 'he'}, {ch: 'ホ', romaji: 'ho'},
+                    {ch: 'マ', romaji: 'ma'}, {ch: 'ミ', romaji: 'mi'}, {ch: 'ム', romaji: 'mu'}, {ch: 'メ', romaji: 'me'}, {ch: 'モ', romaji: 'mo'},
+                    {ch: 'ヤ', romaji: 'ya'}, {ch: 'ユ', romaji: 'yu'}, {ch: 'ヨ', romaji: 'yo'},
+                    {ch: 'ラ', romaji: 'ra'}, {ch: 'リ', romaji: 'ri'}, {ch: 'ル', romaji: 'ru'}, {ch: 'レ', romaji: 're'}, {ch: 'ロ', romaji: 'ro'},
+                    {ch: 'ワ', romaji: 'wa'}, {ch: 'ヲ', romaji: 'wo'}, {ch: 'ン', romaji: 'n'}
+                ]
+            },
+            {
+                title: "Dakuten (゛) & Handakuten (゜)",
+                items: [
+                    {ch: 'ガ', romaji: 'ga'}, {ch: 'ギ', romaji: 'gi'}, {ch: 'グ', romaji: 'gu'}, {ch: 'ゲ', romaji: 'ge'}, {ch: 'ゴ', romaji: 'go'},
+                    {ch: 'ザ', romaji: 'za'}, {ch: 'ジ', romaji: 'ji'}, {ch: 'ズ', romaji: 'zu'}, {ch: 'ゼ', romaji: 'ze'}, {ch: 'ゾ', romaji: 'zo'},
+                    {ch: 'ダ', romaji: 'da'}, {ch: 'ヂ', romaji: 'dji'}, {ch: 'ヅ', romaji: 'dzu'}, {ch: 'デ', romaji: 'de'}, {ch: 'ド', romaji: 'do'},
+                    {ch: 'バ', romaji: 'ba'}, {ch: 'ビ', romaji: 'bi'}, {ch: 'ブ', romaji: 'bu'}, {ch: 'ベ', romaji: 'be'}, {ch: 'ボ', romaji: 'bo'},
+                    {ch: 'パ', romaji: 'pa'}, {ch: 'ピ', romaji: 'pi'}, {ch: 'プ', romaji: 'pu'}, {ch: 'ペ', romaji: 'pe'}, {ch: 'ポ', romaji: 'po'}
+                ]
+            },
+            {
+                title: "Yōon & Kombinasi Vokal Asing (Gairaigo)",
+                items: [
+                    {ch: 'キャ', romaji: 'kya'}, {ch: 'キュ', romaji: 'kyu'}, {ch: 'キョ', romaji: 'kyo'},
+                    {ch: 'シャ', romaji: 'sha'}, {ch: 'シュ', romaji: 'shu'}, {ch: 'ショ', romaji: 'sho'},
+                    {ch: 'チャ', romaji: 'cha'}, {ch: 'チュ', romaji: 'chu'}, {ch: 'チョ', romaji: 'cho'},
+                    {ch: 'ニャ', romaji: 'nya'}, {ch: 'ニュ', romaji: 'nyu'}, {ch: 'ニョ', romaji: 'nyo'},
+                    {ch: 'ヒャ', romaji: 'hya'}, {ch: 'ヒュ', romaji: 'hyu'}, {ch: 'ヒョ', romaji: 'hyo'},
+                    {ch: 'ミャ', romaji: 'mya'}, {ch: 'ミュ', romaji: 'myu'}, {ch: 'ミョ', romaji: 'myo'},
+                    {ch: 'リャ', romaji: 'rya'}, {ch: 'リュ', romaji: 'ryu'}, {ch: 'リョ', romaji: 'ryo'},
+                    {ch: 'ジャ', romaji: 'ja'}, {ch: 'ジュ', romaji: 'ju'}, {ch: 'ジョ', romaji: 'jo'},
+                    {ch: 'ビャ', romaji: 'bya'}, {ch: 'ビゅ', romaji: 'byu'}, {ch: 'ビョ', romaji: 'byo'},
+                    {ch: 'ピャ', romaji: 'pya'}, {ch: 'ピュ', romaji: 'pyu'}, {ch: 'ピョ', romaji: 'pyo'},
+                    {ch: 'ティ', romaji: 'ti'}, {ch: 'ディ', romaji: 'di'}, {ch: 'フィ', romaji: 'fi'}, {ch: 'ヴェ', romaji: 've'},
+                    {ch: 'ッ', romaji: 'tsu (sokuon)'}, {ch: 'ー', romaji: 'chouon'}
+                ]
+            }
         ];
+
+        // Flatten data untuk keperluan kuis dan latihan tulis secara instan
+        const hiraganaData = hiraganaGroups.flatMap(g => g.items);
+        const katakanaData = katakanaGroups.flatMap(g => g.items);
 
         const readingSentences = [
             {
@@ -270,21 +330,6 @@
                 html: '<ruby>日本<rt>にほん</rt></ruby>のロックを<ruby>聞<rt>き</rt></ruby>きながら、パソコンでゲームをします。',
                 romaji: 'Nihon no rokku o kikinagara, pasokon de geemu o shimasu.',
                 arti: 'Sambil mendengarkan rock Jepang, saya bermain game di komputer.'
-            },
-            {
-                html: '<ruby>毎週<rt>まいしゅう</rt></ruby>、<ruby>友達<rt>ともだち</rt></ruby>とバドミントンをします。',
-                romaji: 'Maishuu, tomodachi to badominton o shimasu.',
-                arti: 'Setiap minggu, saya bermain bulu tangkis dengan teman.'
-            },
-            {
-                html: 'アパートの<ruby>近<rt>ちか</rt></ruby>くに<ruby>安<rt>やす</rt></ruby>くて<ruby>美味<rt>おい</rt></ruby>しいレストランがあります。',
-                romaji: 'Apaato no chikaku ni yasukute oishii resutoran ga arimasu.',
-                arti: 'Di dekat apartemen ada restoran yang murah dan enak.'
-            },
-            {
-                html: '<ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、コーヒーを<ruby>飲<rt>の</rt></ruby>みながら<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。',
-                romaji: 'Ashita no asa, koohii o nominagara nihongo o benkyou shimasu.',
-                arti: 'Besok pagi, saya akan belajar bahasa Jepang sambil minum kopi.'
             }
         ];
 
@@ -293,11 +338,6 @@
                 html: '<ruby>私<rt>わたし</rt></ruby>の<ruby>趣味<rt>しゅみ</rt></ruby>は<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>ることです。<ruby>大阪<rt>おおさか</rt></ruby>の<ruby>街<rt>まち</rt></ruby>を<ruby>歩<rt>ある</rt></ruby>いて、きれいな<ruby>景色<rt>けしき</rt></ruby>を<ruby>見<rt>み</rt></ruby>つけます。',
                 romaji: 'Watashi no shumi wa shashin o toru koto desu. Osaka no machi o aruite, kirei na keshiki o mitsukemasu.',
                 arti: 'Hobi saya adalah mengambil foto. Saya berjalan-jalan di kota Osaka dan menemukan pemandangan yang indah.'
-            },
-            {
-                html: '<ruby>日本語<rt>にほんご</rt></ruby>の<ruby>勉強<rt>べんきょう</rt></ruby>は<ruby>毎日<rt>まいにち</rt></ruby><ruby>続<rt>つづ</rt></ruby>けることが<ruby>大切<rt>たいせつ</rt></ruby>です。アプリを<ruby>使<rt>つか</rt></ruby>って、ひらがなとカタカナをしっかり<ruby>覚<rt>おぼ</rt></ruby>えます。',
-                romaji: 'Nihongo no benkyou wa mainichi tsuzukeru koto ga taisetsu desu. Apuri o tsukatte, hiragana to katakana o sikkari oboemasu.',
-                arti: 'Belajar bahasa Jepang penting untuk dilanjutkan setiap hari. Menggunakan aplikasi untuk menghafal hiragana dan katakana.'
             }
         ];
 
@@ -340,36 +380,55 @@
         }
 
         function renderDaftarKana(type) {
-            const grid = document.getElementById('kana-grid');
-            grid.innerHTML = '';
-            const data = type === 'hiragana' ? hiraganaData : katakanaData;
+            const container = document.getElementById('kana-sections-container');
+            container.innerHTML = '';
+            const groups = type === 'hiragana' ? hiraganaGroups : katakanaGroups;
             let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
 
-            data.forEach(item => {
-                const isHafal = learnedList[item.ch] === true;
-                const card = document.createElement('div');
-                card.className = `p-3 rounded-xl border flex flex-col items-center justify-center shadow-sm transition cursor-pointer ${isHafal ? 'bg-amber-50/60 border-amber-400' : 'bg-white border-slate-100 hover:border-slate-300'}`;
+            const totalCount = type === 'hiragana' ? hiraganaData.length : katakanaData.length;
+            document.getElementById('stat-total-label').innerText = `/${totalCount}`;
+
+            groups.forEach(group => {
+                const groupDiv = document.createElement('div');
+                groupDiv.className = "space-y-2";
                 
-                card.innerHTML = `
-                    <div class="w-full flex justify-end">
-                        <button onclick="event.stopPropagation(); toggleHafal('${item.ch}')" class="w-5 h-5 rounded-md flex items-center justify-center text-xs ${isHafal ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-300 hover:text-slate-500'}">
-                            ✓
-                        </button>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-800 mb-1">${item.ch}</span>
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-[11px] text-slate-400 font-medium">${item.romaji}</span>
-                        <button onclick="event.stopPropagation(); playAudio('${item.ch}')" class="text-slate-400 hover:text-indigo-600">
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
-                        </button>
-                    </div>
-                `;
-                card.onclick = () => playAudio(item.ch);
-                grid.appendChild(card);
+                const titleHeading = document.createElement('h4');
+                titleHeading.className = "text-xs font-bold text-slate-700 uppercase tracking-wide border-b border-slate-200 pb-1";
+                titleHeading.innerText = group.title;
+                groupDiv.appendChild(titleHeading);
+
+                const grid = document.createElement('div');
+                grid.className = "grid grid-cols-5 gap-2.5";
+
+                group.items.forEach(item => {
+                    const isHafal = learnedList[item.ch] === true;
+                    const card = document.createElement('div');
+                    card.className = `p-3 rounded-xl border flex flex-col items-center justify-center shadow-sm transition cursor-pointer ${isHafal ? 'bg-amber-50/60 border-amber-400' : 'bg-white border-slate-100 hover:border-slate-300'}`;
+                    
+                    card.innerHTML = `
+                        <div class="w-full flex justify-end">
+                            <button onclick="event.stopPropagation(); toggleHafal('${item.ch}', '${type}')" class="w-5 h-5 rounded-md flex items-center justify-center text-xs ${isHafal ? 'bg-amber-500 text-white' : 'bg-slate-100 text-slate-300 hover:text-slate-500'}">
+                                ✓
+                            </button>
+                        </div>
+                        <span class="text-2xl font-bold text-slate-800 mb-1">${item.ch}</span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[10px] text-slate-400 font-medium text-center truncate max-w-[60px]">${item.romaji}</span>
+                            <button onclick="event.stopPropagation(); playAudio('${item.ch}')" class="text-slate-400 hover:text-indigo-600">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                            </button>
+                        </div>
+                    `;
+                    card.onclick = () => playAudio(item.ch);
+                    grid.appendChild(card);
+                });
+
+                groupDiv.appendChild(grid);
+                container.appendChild(groupDiv);
             });
         }
 
-        function toggleHafal(ch) {
+        function toggleHafal(ch, type) {
             let learnedList = JSON.parse(localStorage.getItem('learned_kana') || '{}');
             learnedList[ch] = !learnedList[ch];
             localStorage.setItem('learned_kana', JSON.stringify(learnedList));
@@ -485,7 +544,7 @@
             updateWriteView();
         }
 
-        // Pengaturan Kuis Dinamis (Hiragana/Katakana + Acak/Urut)
+        // Pengaturan Kuis Dinamis
         function initQuiz() {
             quizScore = 0;
             quizCurrentIdx = 0;
@@ -498,7 +557,7 @@
             if(modeVal === 'acak') {
                 quizCurrentData = [...sourceData].sort(() => 0.5 - Math.random()).slice(0, 10);
             } else {
-                quizCurrentData = [...sourceData].slice(0, 10); // 10 soal pertama secara berurutan
+                quizCurrentData = [...sourceData].slice(0, 10);
             }
 
             loadQuizQuestion();
